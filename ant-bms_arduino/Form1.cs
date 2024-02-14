@@ -88,22 +88,7 @@ namespace ant_bms_arduino
 
             tablica.Text = BitConverter.ToString(data).Replace("-", "");
 
-
-
-
-
-            /*c1.Text = (((data[6] << 8) | data[7]) * 0.001).ToString();
-            c1.Text = (((data[8] << 8) | data[9]) * 0.001).ToString();
-            c2.Text = (((data[10] << 8) | data[11]) * 0.001).ToString();
-            c3.Text = (((data[12] << 8) | data[13]) * 0.001).ToString();
-            c4.Text = (((data[14] << 8) | data[15]) * 0.001).ToString();
-            c5.Text = (((data[16] << 8) | data[17]) * 0.001).ToString();
-            c6.Text = (((data[18] << 8) | data[19]) * 0.001).ToString();
-            c7.Text = (((data[20] << 8) | data[21]) * 0.001).ToString();
-            c8.Text = (((data[22] << 8) | data[23]) * 0.001).ToString();
-            c9.Text = (((data[24] << 8) | data[25]) * 0.001).ToString();
-            */
-
+            // show all cells voltages
             try
             {
                 for (int i = 0; i < 32; i++)
