@@ -20,6 +20,10 @@ Just run the program, select the port, and press 'Connect'.
 
 It should work with other devices from ANT, but I haven't tested it. Most of these devices use the same data protocol.
 
+## To fix
+
+Program iterates through cells voltages, starting from number 2, skipping the first one. The voltage of the first cell is actually the voltage of the second cell, and so on.
+
 ## App Screen
 
 ![new](https://github.com/khskh/ANT-BMS-Windows-App/assets/26013076/5a9934f3-2205-4b6f-b6dd-fa207d2552e1)
