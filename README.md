@@ -22,7 +22,7 @@ It should work with other devices from ANT, but I haven't tested it. Most of the
 
 ## To fix
 
-USB Disconeccting 
+USB Disconnecting
 
 ## App Screen
 
