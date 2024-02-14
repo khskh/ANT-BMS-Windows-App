@@ -1,8 +1,6 @@
 # ANT BMS Windows App
 
-A simple application for communication between the Ant-BMS system and a computer, using Arduino. This is an old application and is not finished; it only reads data frames and displays 4 basic parameters. May contains some bugs.
-
-# Usage:
+A simple application for communication between the Ant-BMS system and a computer, using Arduino. This is an old application and is not finished; it only reads data frames and displays 4 basic parameters. **May contains some bugs**.
 
 ## Arduino
 
@@ -24,4 +22,5 @@ It should work with other devices from ANT, but I haven't tested it. Most of the
 
 ## App Screen
 
-![test1](https://github.com/khskh/ANT-BMS-Windows-App/assets/26013076/1ebd092f-db48-4f65-b025-10f9d08d359c)
+![new](https://github.com/khskh/ANT-BMS-Windows-App/assets/26013076/5a9934f3-2205-4b6f-b6dd-fa207d2552e1)
+
