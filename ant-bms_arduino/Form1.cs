@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Net.NetworkInformation;
 
 namespace ant_bms_arduino
 {
@@ -36,7 +37,6 @@ namespace ant_bms_arduino
             AvailablePortsBox.Items.AddRange(ports); // Put port names into selection window
         }
 
-
         private void ConnectToPort_Click(object sender, EventArgs e)
         {
             if (!is_connection_established)
@@ -50,15 +50,12 @@ namespace ant_bms_arduino
                 SerPort.StopBits = StopBits.One;
                 SerPort.ReadBufferSize = 20000000;
                 SerPort.DataReceived += SerPort_DataReceived;
-
                 ConnectToPort.Text = "Disconnect";
-
 
                 try
                 {
                     SerPort.Open();         //open a port
                     Thread.Sleep(1000);     //wait a moment
-
                 }
                 catch (Exception ex)
                 {
@@ -72,20 +69,14 @@ namespace ant_bms_arduino
             }
         }
 
-
-
         private void SerPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             ReceivedData = SerPort.ReadLine(); // Read data from port
-
             if (data != null)
             {
                 this.Invoke(new Action(ProcessingData)); // Execute delegate (ProcessingData)
             }
-
         }
-
-
 
         private void ProcessingData()
         {
@@ -100,9 +91,32 @@ namespace ant_bms_arduino
 
 
 
-            //voltage.Text = ((data[4] << 8) | data[5]).ToString();
 
-            //info about array filling
+            /*c1.Text = (((data[6] << 8) | data[7]) * 0.001).ToString();
+            c1.Text = (((data[8] << 8) | data[9]) * 0.001).ToString();
+            c2.Text = (((data[10] << 8) | data[11]) * 0.001).ToString();
+            c3.Text = (((data[12] << 8) | data[13]) * 0.001).ToString();
+            c4.Text = (((data[14] << 8) | data[15]) * 0.001).ToString();
+            c5.Text = (((data[16] << 8) | data[17]) * 0.001).ToString();
+            c6.Text = (((data[18] << 8) | data[19]) * 0.001).ToString();
+            c7.Text = (((data[20] << 8) | data[21]) * 0.001).ToString();
+            c8.Text = (((data[22] << 8) | data[23]) * 0.001).ToString();
+            c9.Text = (((data[24] << 8) | data[25]) * 0.001).ToString();
+            */
+
+            try
+            {
+                for (int i = 0; i < 32; i++)
+                {
+                    int dataIndex = 8 + i * 2;
+                    Label label = (Label)this.Controls.Find($"c{i + 1}", true)[0];
+                    label.Text = (((data[dataIndex] << 8) | data[dataIndex + 1]) * 0.001).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
 
 
             int arrayLength = data.Length;
@@ -129,7 +143,6 @@ namespace ant_bms_arduino
             }
         }
 
-
         // Convert a String variable containing a HEX number to a byte array
         public static byte[] StringToByteArray(String hex)
         {
@@ -139,7 +152,6 @@ namespace ant_bms_arduino
                 bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
             return bytes;
         }
-
 
         // Check if hex is in string 
         private string EnsureIsHEX(string input)
@@ -168,7 +180,6 @@ namespace ant_bms_arduino
                 return "0000";
             }
         }
-
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
