@@ -93,9 +93,9 @@ namespace ant_bms_arduino
             {
                 for (int i = 0; i < 32; i++)
                 {
-                    int dataIndex = 8 + i * 2;
+                    int dataIndex = 6 + i * 2;
                     Label label = (Label)this.Controls.Find($"c{i + 1}", true)[0];
-                    label.Text = (((data[dataIndex] << 8) | data[dataIndex + 1]) * 0.001).ToString();
+                    label.Text = (((data[dataIndex] << 8) | data[dataIndex + 1]) * 0.001).ToString("0.000");
                 }
             }
             catch (Exception ex)
