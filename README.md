@@ -22,7 +22,7 @@ It should work with other devices from ANT, but I haven't tested it. Most of the
 
 ## To fix
 
-Program iterates through cells voltages, starting from number 2, skipping the first one. The voltage of the first cell is actually the voltage of the second cell, and so on.
+USB Disconeccting 
 
 ## App Screen
 
