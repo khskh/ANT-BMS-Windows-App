@@ -1,6 +1,8 @@
 # ANT BMS Windows App
 
-A simple application for communication between the Ant-BMS system and a computer, using Arduino. This is an old application and is not finished; it only reads data frames and displays 4 basic parameters. **May contains some bugs**.
+A simple application for communication between the Ant-BMS system and a computer, using Arduino. This is an old application and is not finished; it only reads data frames and displays 4 basic parameters with cells voltage list. **May contains some bugs**.
+
+The data in data array is rounded to the nearest even part. If the data are odd, program adds a 0 at the end.
 
 ## Arduino
 
